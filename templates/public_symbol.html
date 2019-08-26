@@ -1,0 +1,151 @@
+{% if slot_no.0 <= "P06"  %}    
+<div class="row">
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><a href="/enter/{{slot_no.0}}/" 
+                    {% if slot_no.0 in parked  %}
+                        {% if slot_no.0 in notification %}
+                            class= 'ubtn0'
+                        {% else %}
+                            class="ucbtn0"
+                        {% endif %}
+                        {% else %}
+                        class="btn"	
+                    {% endif %}
+                    ><h4 style="color:black">{{slot_no.0}}</h4></a></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><a href="/enter/{{slot_no.1}}/"
+                    {% if slot_no.1 in parked %}
+                    {% if slot_no.1 in notification %}
+                    class= 'ubtn0'
+                {% else %}
+                    class="ucbtn0"
+                {% endif %}
+                    {% else %}
+                        class="btn"	
+                    {% endif %}
+                    
+                      ><h4 style="color:black">{{slot_no.1}}</h4></a></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+            </div>
+        </div>
+    </div>
+{% elif slot_no.0 <= "P09" %}
+<div class="row">
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+                
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><a href="/enter/{{slot_no.0}}/" 
+                    {% if slot_no.0 in parked %}
+                    {% if slot_no.0 in notification %}
+                    class= 'ubtn0'
+                {% else %}
+                    class="ucbtn0"
+                {% endif %}
+                    {% else %}
+                        class="btn"	
+                    {% endif %}
+                    ><h4 style="text-align:center;color:black">{{slot_no.0}}</h4></a></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><a href="/enter/{{slot_no.1}}/" 
+                    {% if slot_no.1 in parked %}
+                    {% if slot_no.1 in notification %}
+                    class= 'ubtn0'
+                {% else %}
+                    class="ucbtn0"
+                {% endif %}
+                    {% else %}
+                        class="btn"	
+                    {% endif %}
+                    
+                    ><h4 style="text-align:center;color:black">{{slot_no.1}}</h4></a></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-3 col-xs-3">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+                <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+            
+            </div>
+        </div>
+    </div>
+    {% elif slot_no.0 <= "P20" %}
+ 
+    <div class="row">
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"><a href="/enter/{{slot_no.0}}/" 
+                        {% if slot_no.0 in parked %}
+                        {% if slot_no.0 in notification %}
+                        class= 'ubtn0'
+                    {% else %}
+                        class="ucbtn0"
+                        {% endif %}
+						{% else %}
+							class="btn"	
+                        {% endif %}
+						><h4 style="color:black">{{slot_no.0}}</h4></a></div>					
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><a href="/enter/{{slot_no.1}}/" 
+                        
+                        {% if slot_no.1 in parked %}
+                        {% if slot_no.1 in notification %}
+                        class= 'ubtn0'
+                    {% else %}
+                        class="ucbtn0"
+                        {% endif %}
+						{% else %}
+							class="btn"	
+                        {% endif %}
+                        
+						><h4 style="color:black">{{slot_no.1}}</h4></a></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+				
+				</div>
+			</div>
+		</div>
+    {% endif %}
+    

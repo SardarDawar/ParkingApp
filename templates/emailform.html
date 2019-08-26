@@ -1,0 +1,30 @@
+<div class="form-popup" id="myForm" autocomplete="off">
+    <form action="/pdf/" class="form-container" method="POST">{% csrf_token %}
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h5><strong>Export</strong></h5>
+            </div>    
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <button class="text-danger float-right fas fa-window-close" id="close" onclick="closeForm()"></button>
+            </div>  
+        </div>  
+            <div id="file">
+                <p class="ml-3">File Type</p>
+                <i class="far fa-file-pdf fa-4x ml-3"></i>
+            </div>
+        
+            <h6>Send to</h6>
+            
+        
+        
+        <input type="text" placeholder="Enter Email" name="to_email" autofill="false" required> 
+        <button type = 'submit' class="m-2 button">Send</button>
+    <div id="cover">
+    </div>    
+    </form>
+    
+</div>
+</div>
+<script>
+    document.getElementById('cover').onclick = function() { closeForm()};
+</script>

@@ -1,0 +1,31 @@
+.panel {
+  margin-bottom: 21px;
+  margin-left:21px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+  } 
+
+.panel-heading h3{
+    margin-left: 40%;
+    margin-right: auto;
+    
+  } 
+
+#detail {
+    margin-top: 5%;
+}
+
+#htab{
+    width: 50%;
+    margin-left:20%
+}

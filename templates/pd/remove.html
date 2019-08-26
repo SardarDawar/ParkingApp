@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    exit
+{% endblock title %}
+    
+
+{% block meta-scripts %}
+    
+{% endblock meta-scripts %}
+    
+{% block content %}
+    <form method="POST" action=".">{% csrf_token %}
+        <div class="container">
+            <div class="form-group row mt-5">
+                    <label for="reg_num" class="col-sm-2 col-form-label">Registration Number</label>
+                    <div class="col-sm-8">
+                        <input type="text"  class="form-control" id="reg_num" name="reg_num" placeholder="e.g, xyz1234" >
+                    </div>
+                    <div class="col-sm-2 ">
+                        <button id="searchBtn"  class=" btn btn-outline-success" type="submit">Search</button>
+                    </div>
+            </div>
+        
+        
+    </form>
+    <div id="search">
+            
+            {% if results %}
+            <table class="table table-bordered" id="customer">
+                    <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Number</th>
+                                <th>Slot</th>
+                                <th>Charge Car</th>
+                                <th>Remove Car</th>
+                            </tr>        
+                        </thead>
+                        <tbody>
+                {% for result in results %}
+                      <tr>
+                            <td scope="row">{{result.car_model}}</td>
+                            <td>{{result.reg_num}}</td>
+                            <td>{{result.slot_no}}</td>
+                            <td> 
+                            {% if result.limit_reached and not result.charged %}
+                                <a href="/data/{{result.id}}/charge/">Yes</a>
+                            {% elif result.charged and result.limit_reached  %}
+                                Charged
+                            {% else %}
+                                No
+                            {% endif %}
+                            </td>
+                            <td><a href="/data/{{result.id}}/delete/">Remove</a></td>
+                      </tr>
+                {% endfor %}
+        </tbody>
+    </table>                             
+            {% endif %}
+                
+    </div>
+</div>
+
+{% endblock content %}
+<script>
+        $(document).ready(function() {
+            $('#searchBtn').click(function(){
+                $.post("/data/remove/",
+                {
+                    reg_name:$('input#reg_name').val()
+                },
+                function(){
+                    $('#search').load(document.URL+" #search")
+                });
+            });
+        });
+    </script>

@@ -1,0 +1,87 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>History</title>
+    <style type="text/css">
+        @page {size: {{ pagesize }};margin: 1cm;}
+     
+    .panel {
+      margin-bottom: 21px;
+      margin-left:21px;
+      background-color: #ffffff;
+      
+      border-radius: 4px;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+    
+    .panel-heading {
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        
+        
+      } 
+    
+    
+    
+    #detail {
+        margin-top: 5%;
+    }
+    
+    #htab{
+        width: 50%;
+    }
+    </style>
+    
+</head>
+<body>
+        <div class="panel">
+                <h3>Summary</h3>
+                        Total cars:{{total}}<br>
+                        Reserverd cars:{{r_car}}<br>
+                        Customers Cars:{{c_car}}<br>
+                        Charged Customers:{{Chrg}}<br>
+                        Uncharged Customers:{{Unchrg}}<br>
+                <div id="detail">
+                <div class="panel-heading"><h3>Detail</h3></div>
+                <div  class="panel-body">
+                    <table id="htab">
+                        <tr >
+                            <td><strong>Car</strong></td>
+                            <td><strong>Reg#</strong></td>
+                            <td><strong>duration</strong></td>
+                            <td><strong>Charged</strong></td>
+                        </tr>      
+                        {% for car in cars %}
+                            <tr>
+                                <td>{{car.car_model}}</td>
+                                <td>{{car.reg_num}}</td>
+                                <td>{{car.duration}}</td>
+                                <td> 
+                                    {% if car.charged %} 
+                                     <span style="background-color: green;color:yellow ;" >  Yes</span>
+                                    {% else %}
+                                        No
+                                    {% endif %}
+                                </td>
+                            </tr>    
+                        {% endfor %}           
+                    </table>
+                </div>
+                </div>
+                </div>
+                
+</body>
+</html>
+
+
+
+
+
+
+        
+    

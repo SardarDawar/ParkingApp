@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block meta-scripts %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<style>
+		.btn{
+			padding:5%;
+			width:150%;
+			background-color:silver;
+			color:grey;
+			border:1px solid black;
+			border-radius:12px;
+		}
+		.btn:hover{
+				padding-top:5px;
+				background-color:green;
+				box-shadow:0 0 10px green, 0 0 40px green, 0 0 80px green;
+				pointer:cursor;
+				color:white;
+				text-align:center;
+			}
+		.btn2{
+			padding:5%;
+			width:100%;
+			background-color:silver;
+			border:0px;
+			border-color:black;
+			outline:none;
+			display:none;
+			border-radius:12px;
+		}
+		.btn3{
+			padding:5%;
+			width:130%;
+			background-color:silver;
+			color:grey;
+			border:1px solid black;
+			border-radius:5%;
+			border-radius:12px;
+			
+		}
+		.btn3:hover{
+				padding-top:5px;
+				background-color:green;
+				box-shadow:0 0 10px green, 0 0 40px green, 0 0 80px green;
+				pointer:cursor;
+				color:white;
+				text-align:center;
+			}
+		.jumbotron{	
+			background-color:black;
+			color:black;
+			opacity:0.7;
+			
+		}
+		.big-banner{
+			background-image: url("{% static 'images/carrrs.jpg'%}");
+			background-size:100%;
+		}
+		.tx-t{
+			color:white;
+			border-bottom:2px solid grey;
+			font-size:50px;
+		}
+	.lbtn
+	{
+		position:relative;
+		display:inline-block;
+		padding:15px 30px;
+		color:#FFD700;
+		text-transform:uppercase;
+		letter-spacing:4px;
+		text-decoration:none;
+		font-size:24px;
+		overflow:hidden;
+		transition:0.2s;
+	}
+	.lbtn:hover{
+		color:white;
+		background:#FFD700;
+		box-shadow:0 0 10px #FFD700, 0 0 40px #FFD700, 0 0 80px #FFD700;
+		transition-display:1s;
+	}
+	.ubtn
+	{
+		padding:5%;
+		width:130%;
+		background-color: green;
+		color:green;
+		border:1px solid black;
+		
+		border-radius:12px;
+	}
+	.ubtn:hover
+	{
+		padding-top:5px;
+		background-color:grey;
+		box-shadow:0 0 10px grey, 0 0 40px grey, 0 0 80px grey;
+		pointer:cursor;
+		color:white;
+		text-align:center;
+	}
+	.ubtn0
+	{
+		padding:5%;
+		width:150%;
+		background-color: green;
+		color:green;
+		border:1px solid black;
+		text-align: center;
+		border-radius:12px;
+	}
+	.ubtn0:hover
+	{
+		padding-top:5px;
+		background-color:grey;
+		box-shadow:0 0 10px grey, 0 0 40px grey, 0 0 80px grey;
+		pointer:cursor;
+		color:white;
+		text-align:center;
+	}
+	.ucbtn0
+	{
+		padding:5%;
+		width:150%;
+		background-color: yellow;
+		color:yellow;
+		border:1px solid black;
+		text-align: center;
+		border-radius:12px;
+	}
+	.ucbtn0:hover
+	{
+		padding-top:5px;
+		background-color:yellowgreen;
+		box-shadow:0 0 10px yellowgreen, 0 0 40px yellowgreen, 0 0 80px yellowgreen;
+		pointer:cursor;
+		color:white;
+		text-align:center;
+	}
+	
+	</style>
+
+{% endblock meta-scripts %}
+
+
+{% block title %}
+	{{parking}} Parking
+{% endblock title %}
+	
+
+{% block content %}
+    <!-- PAGE CONTAINER-->
+    <div class="page-container" style="height:100%;">
+
+        <div class="container">
+  <div class="jumbotron big-banner mt-5">
+    
+    <h1>{{parking}} Parking Area</h1> 
+	
+	
+		<p>Click the car to open the form or next to go to the next section.</p> 
+	
+  </div>
+</div>
+
+<div class="jumbotron" style="height:100%;padding-top:150px">
+<div class="container" style="border:2px solid grey">
+
+		<div class="row">
+				<div class="col-md-12"><center><h2 class="tx-t"><i class='fas fa-car-side' style="font-size:25px;color:#FFD700"></i>&nbsp;&nbsp;&nbsp;&nbsp;Area Map&nbsp;&nbsp;&nbsp;&nbsp;<i class='fas fa-car-side' style="font-size:25px;color:#FFD700"></i></h2></center></div>
+			</div>
+{% if type == "R" %}
+	
+	
+<div class="row">
+	{% for i in count %}
+	
+	{% if i != "R07" and i != "R08" and i != "R09" and i != "R10" and i != "R11" and i != "R12"%}
+		{% include 'symbol.html' with slot_no=i parked=parked only%}
+	{% elif i == "R11" %}
+</div>
+	<div class="row">
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><a 
+						{% if "R07" in parked %}
+							class="ubtn"
+						{% else %}
+							class="btn" 	
+						{% endif %}
+						href="/enter/R07/"><h4 style="color:black">R07</h4></a></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"></div>
+					
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><button href="/enter/R08/" 
+						
+						{% if "R08" in parked %}
+							class="ubtn">
+						{% else %}
+							class="btn3">
+						{% endif %}
+									
+						
+						<h4 style="color:black"><a style="color:black" href="/enter/R08/">R08</a></h4></button></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"><button href="/enter/R09/" 
+						
+						{% if "R09" in parked  %}
+							class="ubtn"
+						{% else %}
+							class="btn3"	
+						{% endif %}
+						><h4 style="color:black"><a style="color:black" href="/enter/R09/">R09</a></h4></button></div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><button href="/enter/R10/"
+						{% if "R10" in parked  %}
+							class="ubtn"
+						{% else %}
+							class="btn3"	
+						{% endif %}
+						 ><h4 style="color:black"><a style="color:black" href="/enter/R10/">R10</a></h4></button></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"><button href="/enter/R11/" 
+						{% if "R11" in parked %}
+							class="ubtn"
+						{% else %}
+							class="btn3"	
+						{% endif %}
+						><h4 ><a style="color:black" href="/enter/R11/">R11</a></h4></button></div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-xs-3">
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-xs-6"><button href="/enter/R12/" 
+						{% if "R12" in parked %}
+							class="ubtn"
+						{% else %}
+							class="btn3"	
+						{% endif %}
+							><h4 style="color:black"><a style="color:black" href="/enter/R12/">R12</a></h4></button></div>
+					<div class="col-xl-6 col-md-6 col-xs-6"><button href="/enter/R12/" 
+						{% if "R13" in parked %}
+							class="ubtn"
+						{% else %}
+							class="btn2"	
+						{% endif %}
+						><h4 style="color:black"><a style="color:black" href="/enter/R13/">R13</a></h4></button></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+	{% endif %}
+	{% endfor %}
+</div>
+{% else %}
+{% for i in count %}
+	{% include 'public_symbol.html' with slot_no=i %}
+{% endfor %}
+
+{% endif %}
+
+<div class="row mt-4" style="border-top:1px solid grey">
+		<div class="col-xl-12 col-md-12 col-xs-12">
+			<br>
+		</div>
+</div>
+<div class="row">
+    <div class="col-xl-12 col-md-12 col-xs-12">
+        <center>
+			<button class="lbtn"><h3>Back<a href="/"></h3>
+				<i class="fas fa-arrow-alt-circle-left" style="font-size:150%;color:grey"></i>
+				<a href="FPage.html"></a>
+			</button>
+		</center>
+    </div>
+</div>		
+</div>
+</div>
+
+{% endblock content %}
+    
+      
+<!-- end document-->

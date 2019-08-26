@@ -1,0 +1,278 @@
+{% extends 'base.html' %}   
+
+
+{% block title %}
+    Enter Form
+{% endblock title %}
+    
+
+{% block content %}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+
+<!-- MAIN CONTENT-->
+
+{% if not filled %}
+
+<div class="main-content" style="margin-left:15%;">
+    <center>
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">Enter data</div>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-center title-2">Parking lot data</h3>
+                                </div>
+                                <hr>
+                                <form action="." method="post" novalidate="novalidate">{% csrf_token %}   
+                                    <div class="form-group">
+                                            <label for="car_maker" class="control-label mb-1">Car Maker</label>
+                                            <select id="car_maker" name="car_model" type="tel" class="form-control car_maker identified visa" value="" data-val="true"
+                                                data-val-required="Please enter the car manufacturer" data-val-car_model="Please select car maker from list">
+                                                <option value="1" selected>Acura</option>
+                                                <option value="2">Audi</option>
+                                                <option value="3">BMW</option>
+                                                <option value="4">Buick</option>
+                                                <option value="5">Cadillac</option>
+                                                <option value="6">Chevrole</option>
+                                                <option value="7">Chrysler</option>
+                                                <option value="8">Dodge</option>
+                                                <option value="9">Ford</option>
+                                                <option value="10">GMC</option>
+                                                <option value="11">Honda</option>
+                                                <option value="12">Hyundai</option>
+                                                <option value="13">Infiniti</option>
+                                                <option value="14">Jaguar</option>
+                                                <option value="15">Jeep</option>
+                                                <option value="16">Kia</option>
+                                                <option value="17">Land Rover</option>
+                                                <option value="18">Lexus</option>
+                                                <option value="19">Mazda</option>
+                                                <option value="20">Mercedez Benz</option>
+                                                <option value="21">Mini</option>
+                                                <option value="22">Mitsubishi</option>
+                                                <option value="23">Nissan</option>
+                                                <option value="24">Ram</option>
+                                                <option value="25">Subaru</option>
+                                                <option value="26">Tesla</option>
+                                                <option value="27">Toyota</option>
+                                                <option value="28">Volkswagen</option>
+                                                <option value="29">Volvo</option>
+                                            </select>
+                                            <span class="help-block" data-valmsg-for="car_model" data-valmsg-replace="true"></span>
+                                    </div>
+                                   
+                                    <div class="form-group">
+                                        <label for="car_model" class="control-label mb-1">Car Model</label>
+                                        <input id="car_model" name="car_model" type="tel" class="form-control car_model identified visa" value="" data-val="true"
+                                            data-val-required="Please enter the car number" data-val-car_model="Please enter a valid car number"
+                                            autocomplete="car_model">
+                                        <span class="help-block" data-valmsg-for="car_model" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="car_model" class="control-label mb-1">Car Color</label>
+                                            <select id="car_color" name="car_color" type="tel" class="form-control car_color identified visa" value="" data-val="true">
+                                            <span class="help-block" data-valmsg-for="car_color" data-valmsg-replace="true"></span>
+                                                <option value="Black" selected>Black</option>
+                                                <option value="White">White</option>
+                                                <option value="Green">Green</option>
+                                                <option value="Grey">Grey</option>
+                                                <option value="Blue">Blue</option>
+                                                <option value="Red">Red</option>
+                                                <option value="Yellow">Yellow</option>
+                                                <option value="Biege">Biege</option>
+                                            </select>
+                                    </div>    
+                                    <div class="form-group">
+                                            <label for="cc-number" class="control-label mb-1">Registration #</label>
+                                            <input id="cc-number" name="reg_num" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
+                                                data-val-required="Please enter the car number" data-val-cc-number="Please enter a valid car number"
+                                                autocomplete="cc-number">
+                                            <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                        </div>
+
+                                    <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Slot number</label>
+                                            <input id="cc-pament" name="slot_no" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{slot}}">
+                                        </div>
+                                        <div class="form-group has-success">
+                                        
+                                        {% if show_time %}
+                                        <div class="form-group">
+                                                <label for="cc-exp" class="control-label mb-1">Time Duration</label>
+                                                <select name="limit" id="id_limit" class='form-control' aria-required="true" aria-invalid="false">
+                                                    <option value="1" selected>30 min</option>
+                                                    <option value="2">45 min</option>
+                                                    <option value="3">1 hr</option>
+                                                    <option value="4">1 hr 30 min</option>
+                                                    <option value="5">2 hr</option>
+                                                    <option value="6">2 hr 15 min</option>
+                                                    <option value="7">10 sec</option>
+                                                </select>
+                                            </div>    
+                                        {% endif %}
+                                            
+                                        
+                                                <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                            </div>
+                                    <div>
+                                        <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">                           
+                                            Submit
+                                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                        </button>
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </center>
+</div>
+
+</div>
+
+{% else %}
+
+<div class="main-content" style="margin-left:15%;">
+        <center>
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">Enter data</div>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-center title-2">Parking lot data</h3>
+                                </div>
+                                <hr>
+                                <form action="." method="post" novalidate="novalidate">{% csrf_token %}  
+                                <div class="form-group">
+                                        <label for="car_maker" class="control-label mb-1">Car Maker</label>
+                                        <input id="car_maker" name="car_maker" type="tel" class="form-control car_maker identified visa" value="{{filled.car_maker}}" data-val="true"
+                                            data-val-required="Please enter the car number" data-val-car_maker="Please enter a valid car number"
+                                            autocomplete="car_maker" readonly>
+                                        <span class="help-block" data-valmsg-for="car_maker" data-valmsg-replace="true"></span>
+                                    </div>
+         
+                                    <div class="form-group">
+                                        <label for="car_model" class="control-label mb-1">Car Model</label>
+                                        <input id="car_model" name="car_model" type="tel" class="form-control car_model identified visa" value="{{filled.car_model}}" data-val="true"
+                                            data-val-required="Please enter the car number" data-val-car_model="Please enter a valid car number"
+                                            autocomplete="car_model" readonly>
+                                        <span class="help-block" data-valmsg-for="car_model" data-valmsg-replace="true"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label for="car_color" class="control-label mb-1">Car color</label>
+                                            <input id="car_color" name="car_color" type="tel" class="form-control car_color identified visa" value="{{filled.car_color}}" data-val="true"
+                                                data-val-required="Please enter the car number" data-val-car_color="Please enter a valid car number"
+                                                autocomplete="car_color" readonly>
+                                            <span class="help-block" data-valmsg-for="car_color" data-valmsg-replace="true"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label for="cc-number" class="control-label mb-1">Registration #</label>
+                                            <input id="cc-number" name="reg_num" type="tel" class="form-control cc-number identified visa" value="{{filled.reg_num}}" data-val="true"
+                                                data-val-required="Please enter the car number" data-val-cc-number="Please enter a valid car number"
+                                                autocomplete="cc-number" readonly>
+                                            <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                        </div>
+
+                                    <div class="form-group">
+                                            <label for="cc-payment" class="control-label mb-1">Slot number</label>
+                                            <input id="cc-pament" name="slot_no" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{slot}}" readonly>
+                                        </div>
+                                        <div class="form-group has-success">
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="cc-exp" class="control-label mb-1">Time Duration</label>
+                                                        <input class="form-control"                                                 
+                                                        {% if filled.limit == 1 %}
+                                                        value="30 min"    
+                                                        {% elif filled.limit == 2 %}
+                                                        value="45 min"
+                                                        {% elif filled.limit == 3 %}
+                                                        value="1 hr"
+                                                        {% elif filled.limit == 4 %}
+                                                        value="1 hr 30 min"
+                                                        {% elif filled.limit == 5 %}
+                                                        value="2 hr"
+                                                        {% elif filled.limit == 6 %}
+                                                        value="2 hr 15 min"
+                                                        {% else %}
+                                                        value="10 sec"
+                                                        {% endif %}
+                                                         readonly> 
+                                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                    <div>
+                                        <a id="payment-button" type="submit" class="btn btn-lg btn-warning btn-block" href="/data/{{filled}}/delete/">
+                                            Remove
+                                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+</center>
+</div>
+
+</div>
+
+    
+{% endif %}    
+{% endblock content %}
+
+    <!--<form action="." method = 'POST'> {% csrf_token %}
+    <div class="container mt-5">
+        <div class="form-group row">
+            <label for="car_model" class="col-sm-2 col-form-label">Car Model</label>
+            <div class="col-sm-10">
+                <input type="text"  class="form-control" id="car_model" name="car_model" placeholder="e.g, xli" >
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="reg_num" class="col-sm-2 col-form-label">Registration Number</label>
+            <div class="col-sm-10">
+                <input type="text" name="reg_num" class="form-control" id="inputPassword" placeholder="e.g, mln4421">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="reg_num" class="col-sm-2 col-form-label">Slot num</label>
+            <div class="col-sm-10">
+            <input type="text" name="slot_no" class="form-control" id="inputslot" placeholder="e.g, c21 or r21">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="reg_num" class="col-sm-2 col-form-label">Limit</label>
+            <div class="col-sm-10">
+                    <select name="limit" id="id_limit">
+                            <option value="1" selected="">30 min</option>
+                            <option value="2">1 hr</option>
+                            <option value="3">2 hrs</option>
+                            <option value="4">10 sec</option>
+                        </select>
+            </div>
+        </div>
+        <button type='submit' class="btn btn-outline-success">Enter Car</button>
+    </div>
+    </form>
+    -->

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+  Registration
+{% endblock title %}
+  
+
+{% block scripts %}
+<style>
+  label{
+    font-weight:bold;
+  }
+  .helptext{
+    font-weight:normal!important;
+  }
+  li{
+    font-weight:normal!important;
+  }
+</style>
+{% endblock scripts %}
+  
+
+
+{% block content %}
+<section id="login" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="border-bottom mb-4">Employee</h2>
+        <p> If you already have an account, you can
+          <a href="">sign in</a></p>
+        <form method="post" class="lead" enctype="multipart/form-data">{% csrf_token %}
+
+                {{form.as_p}}
+                {{userform.as_p}}
+          <button type="submit" class="btn btn-dark">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+  
+{% endblock content %}
+  
+
+
+  

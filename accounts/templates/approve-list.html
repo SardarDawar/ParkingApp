@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Approve Lists
+{% endblock title %}
+    
+
+{% block content %}
+    <div>
+        <section>
+            <div class='container'>
+                
+                {% for req in users %}
+                    <a href='/accounts/about/{{req.user.id}}/'>{{req.user}}</a>
+                    <a class='btn btn-outline-success text-success' href="/accounts/approve/{{req.user.id}},1/">Accept</a>
+                    <a class="btn btn-outline-danger text-danger" href="/accounts/approve/{{req.user.id}},2/">Decline</a>
+                {% endfor %}
+                    
+                
+            </div>
+        </section>
+    </div>
+{% endblock content %}
+    

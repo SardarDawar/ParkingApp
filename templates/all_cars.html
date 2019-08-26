@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}      
+{% block meta-scripts %}
+    <meta http-equiv="refresh" content="60">
+    <link rel="stylesheet" href="{% static 'css/all_cars.css' %}">
+{% endblock meta-scripts %}
+    
+
+{% block title %}
+    All Cars
+{% endblock title %}
+    
+
+{% block content %}
+<h3 >Parked Cars</h3>
+<section  class="container">
+<table class="table table-bordered" id="customer">
+    <thead>
+            <tr>
+                <th>Model</th>
+                <th>Number</th>
+                <th>Slot</th>
+                <th>Charge Car</th>
+                <th>Remove Car</th>
+            </tr>        
+        </thead>
+        <tbody>
+                {% for car in cars %}    
+                <tr>
+                    <td scope="row">{{car.car_model}}</td>
+                    <td>{{car.reg_num}}</td>
+                    <td>{{car.slot_no}}</td>
+                    <td>
+                        
+                        {% if car.limit_reached and not car.charged %}
+                            <a href="/data/{{car.id}}/charge/">Yes</a>
+                        {% elif car.charged and car.limit_reached  %}
+                             Charged
+                        {% else %}
+                            No
+                        {% endif %}
+                    </td>
+                    <td><a href="/data/{{car.id}}/delete/">Remove</a></td>
+                </tr>
+                {% endfor %}
+        </tbody>
+</table>                
+</section>
+    
+
+{% endblock content %}
+    

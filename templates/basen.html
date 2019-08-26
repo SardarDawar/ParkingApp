@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+{% load staticfiles %}
+<html lang="en">
+<head>
+	<!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <!-- Title Page-->
+    <title>
+        
+        {% block title %}
+            
+        {% endblock title %}
+            
+    </title>
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/popup.js' %}"></script>
+    <script> 
+        function redir()
+        {
+            $(".notifications").load(document.URL+" .notifications");
+        }
+        setInterval(redir,60000);
+
+    
+    </script>
+    <!-- Fontfaces CSS-->
+    
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/popup.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/theme.css/' %}" rel="stylesheet" media="all">
+    
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    {% block meta-scripts %}
+        
+    {% endblock meta-scripts %}
+</head>
+<body class="animsition" >
+    <!-- ModAl FORM -->
+    {% include 'emailform.html' %}
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none" style="background-color: rgba(223, 39, 39, 0.7)">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="/">
+                            <img src="{% static 'images/parkinglogo.jpg' %}" alt="CoolAdmin" style="height:50px; width:50px;"/>
+                            <span style="padding-left:10px; font-size:25px; color:black;"> <b>Parking Lot</b> </span>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <li>
+                            <a href="/data/type/P/">
+                                <i class="fas fa-map-marker-alt"></i>Public Parking lots</a>
+                        </li>
+						<li>
+                            <a href="/data/type/R/">
+                                <i class="fas fa-map-marker-alt"></i>Reserved Parking lots</a>
+                        </li>
+                       
+                        <li>
+                            <a href="/data/">
+                                <i class="fas fa-bell"></i>Notifications</a>
+                        </li>
+                        
+                        <li >              
+                            <a href="/pdf/" class="fas fa-map-marker-alt">Generate PDF</a> 
+                        </li>                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        
+        <!--LEft SideMenu Bar-->
+        <aside class="menu-sidebar d-none d-lg-block" style="background-color: rgba(212, 205, 205, 0.7);">
+        
+                <a class="logo" href="/">
+                            <img src="{% static 'images/parkinglogo.jpg' %}" alt="CoolAdmin" style="height:50px; width:50px;"/>
+                            <span style="padding-left:10px; font-size:25px; color:black;"> <b>Parking Lot</b> </span>
+                </a>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list" >
+                        <li>
+                            <a href="/data/type/P/">
+                                <i class="fas fa-map-marker-alt" style="color:#bc8974"></i>Public Parking lots</a>
+                        </li>
+						<li>
+                            <a href="/data/type/R/">
+                                <i class="fas fa-map-marker-alt" style="color:#FFD700"></i>Reserved Parking lots</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="/data/">
+                                <i class="fas fa-bell"></i>Notifications</a>
+                        </li> 
+                        <li>
+                            <button  onclick="openForm()" > 
+                            <i class="fas fa-file-pdf-o fa-lg mr-4" aria-hidden="true" style="color:indianred"></i>Send PDF</button>
+                        </li>                              
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+<!---################ Navigation #################-->
+<!--<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><strong>Menu</strong></a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navResponsive" aria-controls="navResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navResponsive">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a href="/data/history/" class="nav-link mr-4">History<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                            <a href="/pdf/" class="nav-link">Generate PDF</a>
+                    </li>
+            </div>
+        </div>
+</nav>-->
+
+    {% block content %}
+        
+    {% endblock content %}
+    <!---################ popup #################-->
+           
+    <!-- Notifation Js -->
+
+    <!-- Jquery JS-->
+    
+    <!-- Bootstrap JS-->
+    <script src="{% static 'vendor/bootstrap-4.1/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+    <!-- Vendor JS       -->
+    <script src="{% static 'vendor/slick/slick.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/counter-up/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'vendor/counter-up/jquery.counterup.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/circle-progress/circle-progress.min.js' %}"></script>
+    <script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'vendor/chartjs/Chart.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}">
+    </script>
+
+    <!-- Main JS-->
+<script src="{% static 'js/main.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

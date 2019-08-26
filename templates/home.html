@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block meta-scripts %}
+    
+    <script>
+            function redir()
+            {
+                $('.notifications').load(document.URL+" .notifications")
+            }
+            setInterval(redir,10000);
+        </script>
+    <link rel="stylesheet" href="{% static 'css/home.css/' %}">
+{% endblock meta-scripts %}
+    
+
+    {% block title %}
+    All Cars
+{% endblock title %}
+    
+
+{% block content %}
+
+<!---################ BODY MENU #################-->
+<div class="container">
+<div class="row justify-content-md-center mt-5">
+    <div class="col-lg-6 col-md-6 align-self-center">
+        <div class="card border-secondary m-auto" style="width: 18rem;" >
+          <div class="card-body">
+            <div style="text-align: center">
+                <h1 class="heading-card">Main Menu</h1>
+                <ul class="list-group list-group-flush">
+                    <div class="btnn">
+                        <li class="list-group-item"><a href="/enter/" class="btn btn-outline-success btn-lg">Enter car</a></li>
+                        <li class="list-group-item"><a href="/data/remove/" class="btn btn-outline-success btn-lg">Exit car</a></li>
+                        <li class="list-group-item"><a href="/all_cars/" class="btn btn-outline-success btn-lg mt-2">Parked cars</a></li>
+                    </div>
+                </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+<!---################ NOTIFICATIONS #################-->
+    <div class="col-lg-6 col-sm-6">
+        <div class="notifications">
+            {% if cars %}
+            <h3>Notifications</h3>
+            <table class="table" id="ntab">
+                <tr>
+                    <th>Model</th>
+                    <th>Number</th>
+                    <th>Slot</th>
+                    <th>Charge</th>
+                    <th>Remove</th>
+                </tr>
+                {% for car in cars %}    
+                <tr>
+                    <td>{{car.car_model}}</td>
+                    <td>{{car.reg_num}}</td>
+                    <td>{{car.slot_no}}</td>
+                    <td>
+                    {% if car.limit_reached and not car.charged %}
+                        <a href="/data/{{car.id}}/charge/">Yes</a>
+                    {% else %}
+                        No
+                    {% endif %}</td>
+                    <td><a href="/data/{{car.id}}/delete/">Remove</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

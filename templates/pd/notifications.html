@@ -1,0 +1,47 @@
+{% extends 'basen.html' %}
+
+
+
+
+{% block title %}
+    notifications
+{% endblock title %}
+
+
+
+{% block content %}
+
+<!-- PAGE CONTAINER-->
+ <div class="page-container">
+        <!-- MAIN CONTENT-->
+        <div class="main-content" >
+            <h2 class="title-1 m-b-25 ml-5">Notifications</h2>
+            <div class="table-responsive table--no-card     ">
+                <table class="table table-borderless table-striped table-earning">
+                    <thead>
+                        <tr>
+                            <th>Car Maker</th>
+                            <th>Car Number</th>
+                            <th>Car Color</th>
+                            <th>Slot Number</th>
+                            <th>Charge</th>                                               
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for car in notify %}
+                        <tr>
+                            <td>{{car.car_maker}}</td>
+                            <td> {{car.car_model}} {{car.reg_num}}</td>
+                            <td>{{car.car_color}}</td>
+                            <td>{{car.slot_no}}</td>
+                            <td><a href="/data/{{car.slot_no}}/charge/">Charge</a></td>
+                        <tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+        <!-- END MAIN CONTENT-->
+        <!-- END PAGE CONTAINER-->
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+   
+
+
+
+{% block title %}
+    Login Page
+{% endblock title %}
+    
+
+{% block content %}
+
+<center>
+        <div class="page-container">    
+<div class="main-content" >
+
+<section id="login">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="border-bottom mb-4">Login</h2>
+              <p> Enter your credentials here</p>
+              <form method="post" class="lead">{% csrf_token %}               
+          <div id="div_id_username" class="form-group  ">
+                  <label for="id_username" class="control-label required-field ">
+                      Username
+                  </label>
+                      <div class="">
+                          <input type="text" name="username" class=" form-control" required id="id_username">
+                      </div>
+          </div>
+          <div id="div_id_password" class="form-group  ">
+                  <label for="id_password" class="control-label required-field ">
+                      Password
+                  </label>
+                      <div class="">
+                          <input type="password" name="password" class=" form-control" required id="id_password">                        
+                      </div>
+          </div>
+                <button type="submit" class="btn btn-default">Login</button>
+              </form>
+              <br>
+            
+            {% if error %}
+              <span class="badge badge-warning">{{error}}</span>
+            {% endif %}
+              
+         
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+</div>
+
+</center>
+
+
+{% endblock content %}
+    

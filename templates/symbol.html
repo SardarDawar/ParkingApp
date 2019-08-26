@@ -1,0 +1,41 @@
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+{% if slot_no != "R7" and slot_no != "R8" and slot_no != "R9" and slot_no != "R10" and slot_no != "R11" and slot_no != "R12"%}
+
+<div class="col-xl-3 col-md-3 col-xs-3">
+        <div class="row">
+            <div class="col-xl-6 col-md-6 col-xs-6"><a 
+                {% if slot_no in parked %}
+                    class="ubtn0"
+                {% else %}
+                    class="btn" 	
+                {% endif %}
+                    
+                 href="/enter/{{slot_no}}/"><h4 style="color:black">{{slot_no}}</h4></a></div>
+            <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-3 col-xs-3">
+        <div class="row">
+            <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+            <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2"></button></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-3 col-xs-3">
+        <div class="row">
+            <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+            <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-3 col-xs-3">
+        <div class="row">
+            <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+            <div class="col-xl-6 col-md-6 col-xs-6"><button class="btn2" ></button></div>
+        </div>
+    </div>
+
+
+  
+
+{% endif %}
+    
